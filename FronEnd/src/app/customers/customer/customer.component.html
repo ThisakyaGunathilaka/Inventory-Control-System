@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        ID: {{customer.id}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Name: {{customer.name}}</h5>
+        <p class="card-text"> telephone: {{customer.telephone}}</p>
+        <div class="text-right">
+          <button href="#" class="btn btn-primary" (click)="onCustomerEdit()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

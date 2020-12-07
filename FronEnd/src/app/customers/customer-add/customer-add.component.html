@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 mx-auto">
+
+      <div class="card">
+        <div class="card-header text-center bg-dark  text-white">Add Customers</div>
+        <div class="card-body">
+
+          <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" required ngModel name="name"/>
+            </div>
+
+            <div class="form-group">
+              <label for="telephone">Phone</label>
+              <input type="text" class="form-control" id="telephone" required ngModel name="telephone"/>
+            </div>
+
+            <div class="text-right">
+              <button class="btn btn-success" type="submit" [disabled]="!postForm.valid">
+                Create Customer
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
