@@ -1,0 +1,26 @@
+<h2 class="text-center">Customer List</h2>
+<table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table mt-3">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Telephone</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <th scope="row"><a  [routerLink]="['/customer', customer.id]">{{customer.id}}</a></th>
+      <td><a [routerLink]="['/customer', customer.id]">{{customer.name}}</a></td>
+      <td><a [routerLink]="['/customer', customer.id]">{{customer.telephone}}</a></td>
+      <td>
+        <button class="btn btn-sm btn-warning mr-2" (click)="onCustomerEdit(customer.id)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="onCustomerDelete(customer)">X</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<router-outlet></router-outlet>
