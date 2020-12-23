@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 from rest_framework import serializers
 
 from addresses.models import Address
@@ -23,11 +21,22 @@ class CustomerSerializer(serializers.ModelSerializer):
         return customer
 
 
-newkama = {
-    'name': 'newton pahandeepa',
-    'telephone': '1234',
-    'address_set': [
-        {'address': 'C11/Gsdfsdfment Housing Scheme'},
-        {'address': 'C11/sdfsdfsd'}
-    ]
-}
+
+
+
+
+
+
+
+
+
+
+
+# newkama = {
+#     'name': 'newton pahandeepa',
+#     'telephone': '1234',
+#     'address_set': [
+#         {'address': 'C11/Gsdfsdfment Housing Scheme'},
+#         {'address': 'C11/sdfsdfsd'}
+#     ]
+# }

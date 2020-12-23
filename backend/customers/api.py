@@ -1,7 +1,9 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import transaction
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from errors.models import Exceptions
 
 from customers.models import Customer
 from customers.serializer import CustomerSerializer
@@ -9,15 +11,18 @@ from customers.serializer import CustomerSerializer
 
 class CustomerListApi(APIView):
     def get(self, request):
-        qs = Customer.objects.all()
-        serializer = CustomerSerializer(qs, many=True)
-        return Response(serializer.data)
+        try:
+            qs = Customer.objects.all()
+            serializer = CustomerSerializer(qs, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            Exceptions.objects.create(message=e.__doc__)
+            print(e.__class__)
 
 
 class CustomerAddApi(APIView):
     with transaction.atomic():
         def post(self, request):
-            print(request.data)
             serializer = CustomerSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -28,26 +33,30 @@ class CustomerAddApi(APIView):
 
 # utils
 def get_customer(id):
-    qs = Customer.objects.filter(id=id)
-    if qs.exists():
-        customer = qs.first()
+    try:
+        customer = Customer.objects.get(id=id)
         return customer
-    return None
+    except ObjectDoesNotExist:
+        Exceptions.objects.create(message=ObjectDoesNotExist.__doc__)
+        # Exceptions.objects.
+        raise ObjectDoesNotExist()
 
 
 class CustomerDetailApi(APIView):
     def get(self, request, id):
-        customer = get_customer(id=id)
-        if customer is None:
+        try:
+            customer = get_customer(id=id)
+            serializer = CustomerSerializer(customer)
+            return Response(serializer.data)
+        except ObjectDoesNotExist:
             return Response(f"Customer with {id} is not found", status=status.HTTP_404_NOT_FOUND)
-        serializer = CustomerSerializer(customer)
-        return Response(serializer.data)
 
 
 class CustomerEditAPI(APIView):
 
     def put(self, request, id):
         customer = get_customer(id=id)
+        print(customer)
         if customer is None:
             return Response(f"Customer with {id} is not found", status=status.HTTP_404_NOT_FOUND)
         serializer = CustomerSerializer(customer, data=request.data)
@@ -61,8 +70,11 @@ class CustomerEditAPI(APIView):
 class CustomerDeleteAPI(APIView):
     def delete(self, request, id):
         if request.user.is_superuser:
-            customer = get_customer(id=id)
-            if customer is None:
-                return Response(f"Customer with {id} is not found", status=status.HTTP_404_NOT_FOUND)
-            customer.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
+            try:
+                customer = get_customer(id=id)
+                if customer is None:
+                    return Response(f"Customer with {id} is not found", status=status.HTTP_404_NOT_FOUND)
+                customer.delete()
+            except Exception as e:
+                Exceptions.objects.create(message=e.__doc__)
+                return Response(status=status.HTTP_204_NO_CONTENT)

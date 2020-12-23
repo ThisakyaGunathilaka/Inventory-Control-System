@@ -8,8 +8,8 @@ import {CustomerService} from '../customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customer=  {id: '', name: '', telephone: ''};
-
+  customer = {id: '', name: '', telephone: ''};
+  notFound = false;
   constructor(private customerService: CustomerService,
               private router: Router,
               private  route: ActivatedRoute
@@ -24,6 +24,7 @@ export class CustomerComponent implements OnInit {
         console.log(customer);
       }, (error) => {
         console.log(error);
+        this.notFound = true;
       }
     );
 

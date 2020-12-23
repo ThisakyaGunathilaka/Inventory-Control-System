@@ -32,13 +32,13 @@
               </div>
 
 
-            <div class="border-top my-5 mt-5"></div>
+            <div class="border-top my-3 "></div>
 
             <div formArrayName="address_set">
-              <div class="text-right">
-                <button class="btn btn-primary" type="button" (click)="onAddAddresses()">Add Address</button>
+              <div class="text-left">
+                <button class="btn btn-warning btn-sm my-2" type="button" (click)="onAddAddresses()">Add Address</button>
               </div>
-              <div class="form-group"
+              <div class="form-group mt-3"
                    *ngFor="let addressControl of getAddresses(); let i = index">
                 <label for="Address-{{i}}">Address- {{i+1}}</label>
                 <input type="text" [formControlName]="i" id="Address-{{i}}" class="form-control">
@@ -46,7 +46,7 @@
               </div>
 
             </div>
-            <div class="text-right">
+            <div class="text-right mt-4">
               <button class="btn btn-success" type="submit">
                 Create Customer
               </button>

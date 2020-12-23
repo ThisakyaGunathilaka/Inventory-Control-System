@@ -45,8 +45,8 @@ export class CustomerAddComponent implements OnInit {
     for (const address of postData.address_set){
       this.customer.address_set.push({address: address});
     }
-    console.log(this.customer);
-    this.customerService.createCustomer(this.customer).subscribe(response => {
+    if (this.customerForm.valid){
+      this.customerService.createCustomer(this.customer).subscribe(response => {
         console.log(response);
         // alert('Successfully saved');
         this.router.navigate(['customers/']);
@@ -54,6 +54,8 @@ export class CustomerAddComponent implements OnInit {
       error => {
         alert(error);
       });
-
+    }else {
+      alert('please fill all the fields');
+    }
   }
 }

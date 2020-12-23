@@ -7,7 +7,8 @@ import {EditCustomerComponent} from './customers/edit-customer/edit-customer.com
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {CustomerAddComponent} from './customers/customer-add/customer-add.component';
-
+import {EmailComponent} from './communication/email/email.component';
+import {SmsComponent} from './communication/sms/sms.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
   {path: 'customers', component: CustomersComponent},
   {path: 'customer/:id', component: CustomerComponent},
   {path: 'customers/add',  component: CustomerAddComponent},
+  {path: 'customers/communication/email', component: EmailComponent},
+  {path: 'customers/communication/sms', component: SmsComponent},
   {path: 'customer/:id/edit', component: EditCustomerComponent},
   {path: 'not-found', component: PageNotFoundComponent},
   {path: '403', component: ErrorPageComponent, data: {message: 'Not Authorized'}},

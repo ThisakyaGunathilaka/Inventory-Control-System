@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'customers',
     'addresses',
     'errors',
+    'communication',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
 )
-
+ADMIN_EMAIL = "3rule57@gmail.com"
 ROOT_URLCONF = 'myProjectInter.urls'
 
 TEMPLATES = [

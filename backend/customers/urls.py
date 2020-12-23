@@ -2,6 +2,7 @@ from django.urls import path
 
 from customers.api import CustomerListApi, CustomerDetailApi, CustomerAddApi, CustomerEditAPI, CustomerDeleteAPI
 
+app_name = 'customers'
 urlpatterns = [
     path('list/', CustomerListApi.as_view(), name='customer-list'),
     path('add/', CustomerAddApi.as_view(), name='customer-add'),

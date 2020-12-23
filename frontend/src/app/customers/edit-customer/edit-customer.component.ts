@@ -16,7 +16,7 @@ export class EditCustomerComponent implements OnInit {
   customerPhone = '';
   allowEdit = false;
   isEmptyField = false;
-
+  notFound = false;
 
   // changesSaved = false;
 
@@ -36,6 +36,7 @@ export class EditCustomerComponent implements OnInit {
       },
       error => {
         console.log(error);
+        this.notFound = true;
       }
     );
 

@@ -15,6 +15,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CustomerService} from './customers/customer.service';
 import {AuthUserInterceptorService} from './auth-user-interceptor.service';
 import {DataTablesModule} from 'angular-datatables';
+import { EmailComponent } from './communication/email/email.component';
+import { SmsComponent } from './communication/sms/sms.component';
+
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import {DataTablesModule} from 'angular-datatables';
     HomeComponent,
     PageNotFoundComponent,
     ErrorPageComponent,
-    CustomerAddComponent
+    CustomerAddComponent,
+    EmailComponent,
+    SmsComponent,
+
   ],
   imports: [
     BrowserModule,
