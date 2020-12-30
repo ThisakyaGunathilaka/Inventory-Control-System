@@ -29,7 +29,6 @@ export class CustomerAddComponent implements OnInit {
   }
 
   onAddAddresses(): void  {
-    console.log('adding addresses');
     const control = new FormControl(null, Validators.required);
     (this.customerForm.get('address_set') as FormArray).push(control);
   }
@@ -48,7 +47,6 @@ export class CustomerAddComponent implements OnInit {
     if (this.customerForm.valid){
       this.customerService.createCustomer(this.customer).subscribe(response => {
         console.log(response);
-        // alert('Successfully saved');
         this.router.navigate(['customers/']);
       },
       error => {

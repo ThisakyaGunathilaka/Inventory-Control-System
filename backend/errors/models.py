@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 
 class Exceptions(models.Model):
     exception_id = models.CharField(max_length=255, blank=True, null=True)
-    message = models.CharField(max_length=255, blank=True, null=True)
+    message = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

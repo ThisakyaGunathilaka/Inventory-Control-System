@@ -6,7 +6,7 @@ class SendSMS(models.Model):
     message = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.number
+        return str(self.number)
 
 
 class SendEmail(models.Model):

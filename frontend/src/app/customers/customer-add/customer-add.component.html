@@ -9,43 +9,43 @@
           <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
 
 
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" formControlName="name"/>
-                <span
-                  *ngIf="!customerForm.get('name').valid
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name"/>
+              <span
+                *ngIf="!customerForm.get('name').valid
                   && customerForm.get('name').touched"
-                  class="form-text text-danger">
+                class="form-text text-danger">
                 <small>Please enter a valid name</small>
               </span>
-              </div>
+            </div>
 
-              <div class="form-group">
-                <label for="telephone">Phone</label>
-                <input type="text" class="form-control" id="telephone" formControlName="telephone"/>
-                <span
-                  *ngIf="!customerForm.get('telephone').valid
+            <div class="form-group">
+              <label for="telephone">Phone</label>
+              <input type="text" class="form-control" id="telephone" formControlName="telephone"/>
+              <span
+                *ngIf="!customerForm.get('telephone').valid
                   && customerForm.get('telephone').touched"
-                  class="form-text text-danger">
+                class="form-text text-danger">
                 <small>Please enter a valid telephone</small>
               </span>
-              </div>
+            </div>
 
 
             <div class="border-top my-3 "></div>
 
             <div formArrayName="address_set">
               <div class="text-left">
-                <button class="btn btn-warning btn-sm my-2" type="button" (click)="onAddAddresses()">Add Address</button>
+                <button class="btn btn-warning btn-sm my-2" type="button" (click)="onAddAddresses()">Add Address
+                </button>
               </div>
               <div class="form-group mt-3"
                    *ngFor="let addressControl of getAddresses(); let i = index">
-                <label for="Address-{{i}}">Address- {{i+1}}</label>
+                <label for="Address-{{i}}">Address- {{i + 1}}</label>
                 <input type="text" [formControlName]="i" id="Address-{{i}}" class="form-control">
-
               </div>
-
             </div>
+
             <div class="text-right mt-4">
               <button class="btn btn-success" type="submit">
                 Create Customer

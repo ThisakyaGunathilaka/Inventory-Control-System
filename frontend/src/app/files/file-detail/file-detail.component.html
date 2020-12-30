@@ -1,1 +1,16 @@
-<p>file-detail works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="card shadow" style="width: 40rem;">
+        <img src="http://127.0.0.1:8000{{image.path}}" class="card-img-top" alt="{{image.title}}">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{image.title}}</h5>
+          <div class="text-right">
+            <button class="btn btn-warning mr-2" (click)="goToEdit()">Edit</button>
+            <button class="btn btn-danger" (click)="deleteImage(image)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

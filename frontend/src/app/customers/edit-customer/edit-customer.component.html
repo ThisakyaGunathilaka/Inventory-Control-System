@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-6 mx-auto">
-    <form *ngIf="!notFound" #customerForm="ngForm" (ngSubmit)="onUpdateCustomer(customerForm.value)">
+    <form *ngIf="!notFound" [formGroup]="customerForm" (ngSubmit)="onUpdateCustomer(customerForm.value)">
       <div class="card">
         <div class="card-header">
           Edit Customer
@@ -12,27 +12,39 @@
               type="text"
               id="name"
               class="form-control"
-              [(ngModel)]="customerName" required name="name" #custName="ngModel">
+              formControlName="name">
             <span class="text-danger help-text"
-            *ngIf="!custName.valid && custName.touched"
-            >  ** Please enter a valid Username **</span>
+                  *ngIf="!customerForm.get('name').valid && customerForm.get('name').touched"
+            >  ** Please enter a valid Customer Name **</span>
           </div>
 
           <div class="form-group">
-            <label for="status">Customer Telephone</label>
-            <input
-              id="status"
-              class="form-control"
-              [(ngModel)]="customerPhone" name="telephone" required>
-
+            <label for="telephone">Phone</label>
+            <input type="text" class="form-control" id="telephone" formControlName="telephone"/>
+            <span
+              *ngIf="!customerForm.get('telephone').valid
+                  && customerForm.get('telephone').touched"
+              class="form-text text-danger">
+                <small>Please enter a valid telephone</small>
+              </span>
           </div>
+
+          <ng-container formArrayName="address_set">
+              <div class="form-group mt-3"
+                   *ngFor="let addressControl of address_set.controls; let i = index">
+                <label for="Address-{{i}}">Address- {{i + 1}}</label>
+                <input type="text" [formControlName]="i" id="Address-{{i}}" class="form-control">
+              </div>
+          </ng-container>
+
           <span class="text-danger text-sm-left" *ngIf="isEmptyField">Please Fill all fields</span>
           <div class="text-right">
-            <button type="submit" class="btn btn-warning"  >Update Customer </button>
+            <button type="submit" class="btn btn-warning">Update Customer</button>
           </div>
         </div>
       </div>
     </form>
+
     <div *ngIf="notFound">
       <app-page-not-found></app-page-not-found>
     </div>

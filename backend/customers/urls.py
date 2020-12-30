@@ -9,5 +9,4 @@ urlpatterns = [
     path('<id>/', CustomerDetailApi.as_view(), name='customer-detail'),
     path('<id>/edit/', CustomerEditAPI.as_view(), name='customer-edit'),
     path('<id>/delete/', CustomerDeleteAPI.as_view(), name='customer-delete'),
-
 ]

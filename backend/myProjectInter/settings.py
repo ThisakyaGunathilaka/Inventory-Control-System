@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'addresses',
     'errors',
     'communication',
+    'files',
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -144,3 +144,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join('static')
+]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'cdn', 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'cdn', 'media')

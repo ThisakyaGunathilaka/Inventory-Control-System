@@ -31,10 +31,15 @@ export class SmsComponent implements OnInit {
     this.sms.number = this.sendSmsForm.value.number;
     this.sms.message = this.sendSmsForm.value.message;
     if (this.sendSmsForm.valid){
-      console.log(this.sms);
+      this.communicationService.sendSms(this.sms).subscribe(response => {
+        console.log(response);
+        alert('Email Sent Successfully');
+      }, error => {
+        console.log(error);
+      });
     }else{
       console.log('Please enter valid details');
     }
+    this.sendSmsForm.reset();
   }
-
 }

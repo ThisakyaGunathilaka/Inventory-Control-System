@@ -1,1 +1,36 @@
-<p>file-edit works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="text-primary text-center">Edit Image</h2>
+          <form [formGroup]="editImageForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" id="title" class="form-control" formControlName="title">
+            </div>
+
+            <div class="form-group">
+              <img *ngIf="!imageChanged" class="img-fluid edit-image"
+                   src="http://127.0.0.1:8000{{currentImage.path}}" alt="{{currentImage.title}}">
+              <img *ngIf="imageChanged" class="img-fluid edit-image"
+               [src]="newImageUrl" alt="{{currentImage.title}}">
+            </div>
+
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input type="file" id="image" class="form-control" formControlName="image"
+                     (change)="onFilechange($event)">
+            </div>
+
+            <div class="text-right">
+              <button class="btn btn-outline-primary" type="submit">Change</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

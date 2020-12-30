@@ -58,7 +58,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
       this.customerService.delete(customer.id).subscribe(
         response => {
           console.log(response);
-          this.getCustomers();
+          window.location.reload();
         }, error => {
           console.log(error);
         }

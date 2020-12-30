@@ -8,7 +8,7 @@ import {CustomerService} from '../customer.service';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customer = {id: '', name: '', telephone: ''};
+  customer = {id: '', name: '', telephone: '', address_set: []};
   notFound = false;
   constructor(private customerService: CustomerService,
               private router: Router,
@@ -21,13 +21,12 @@ export class CustomerComponent implements OnInit {
     console.log(id);
     this.customerService.getCustomer(+id).subscribe(customer => {
         this.customer = customer;
-        console.log(customer);
+        console.log(this.customer);
       }, (error) => {
         console.log(error);
         this.notFound = true;
       }
     );
-
   }
 
   onCustomerEdit() {

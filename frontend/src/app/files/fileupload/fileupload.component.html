@@ -1,1 +1,29 @@
-<p>fileupload works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-primary my-3 text-center">Upload Files</h3>
+          <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" formControlName="title">
+            </div>
+            <div class="form-group">
+              <img *ngIf="imageAdded" class="img-fluid edit-image"
+                   [src]="imageUrl" alt="">
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input type="file" id="image" class="form-control" formControlName="image"
+                     (change)="onFilechange($event)">
+            </div>
+            <div class="text-right">
+              <button class="btn btn-outline-primary" type="submit">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

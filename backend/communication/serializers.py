@@ -13,3 +13,4 @@ class SendEmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = SendEmail
         fields = ['email_receiver', 'subject', 'message']
+

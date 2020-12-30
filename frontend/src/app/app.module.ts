@@ -17,6 +17,10 @@ import {AuthUserInterceptorService} from './auth-user-interceptor.service';
 import {DataTablesModule} from 'angular-datatables';
 import { EmailComponent } from './communication/email/email.component';
 import { SmsComponent } from './communication/sms/sms.component';
+import { FileuploadComponent } from './files/fileupload/fileupload.component';
+import { FileListComponent } from './files/file-list/file-list.component';
+import { FileEditComponent } from './files/file-edit/file-edit.component';
+import { FileDetailComponent } from './files/file-detail/file-detail.component';
 
 
 
@@ -32,6 +36,10 @@ import { SmsComponent } from './communication/sms/sms.component';
     CustomerAddComponent,
     EmailComponent,
     SmsComponent,
+    FileuploadComponent,
+    FileListComponent,
+    FileEditComponent,
+    FileDetailComponent,
 
   ],
   imports: [

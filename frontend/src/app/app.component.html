@@ -45,10 +45,32 @@
              aria-haspopup="true" aria-expanded="false">
             Customers
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#" [routerLink]="'/customers'">List</a>
-            <a class="dropdown-item" href="#" [routerLink]="'/customers/add'" >Add</a>
-          </div>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="dropdown-item" [routerLink]="'/customers'">List</li>
+            <li class="dropdown-item" [routerLink]="'/customers/add'">Add</li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle">Files</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" [routerLink]="'/files/file-upload'">Upload</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]="'/files/list'">Image List</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle">Communication</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" [routerLink]="'/customers/communication/sms'">Send Sms</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" [routerLink]="'/customers/communication/email'">Send Email</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
 
       </ul>

@@ -42,6 +42,7 @@ export class EmailComponent implements OnInit {
     } else {
       console.log('Please fill all the details');
     }
+    this.sendEmailForm.reset();
 
   }
 
